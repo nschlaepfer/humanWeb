@@ -29,6 +29,13 @@ def extract_search_results():
             title = result.find_element(By.CSS_SELECTOR, "h3").text  # Extract the title
             link = result.find_element(By.CSS_SELECTOR, "a").get_attribute("href")  # Extract the URL
             print(f"Result {i}: {title} ({link})")  # Process the search result as desired
+            print("Extracting page content...")
+            driver.get(link)  # Navigate to the page
+            page_content = driver.find_element(By.TAG_NAME, "body").text  # Extract the text from the body of the page
+            print(page_content)  # Print the page content
+            print("\n---\n")  # Print a separator
+            driver.back()  # Go back to the search results
+            time.sleep(2)  # Wait for the search results to load again
         except Exception as e:
             print(f"Error extracting result {i}: {e}")
 
@@ -39,3 +46,4 @@ extract_search_results()
 print("Closing browser...")
 driver.quit()
 print("Done.")
+
