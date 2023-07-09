@@ -1,8 +1,5 @@
-The project you provided as a reference is a web scraper that tracks prices on e-commerce websites. It's a Python-based project that uses Flask for the backend and React for the frontend. It also includes a scheduler for automation. The project structure is divided into three main subdirectories: Backend, frontend, and scheduler.
 
-# Tech Spec Plan
-
-## Project Name: Web Searching Bot
+## Tech Spec Plan
 
 ### Overview
 
@@ -11,29 +8,60 @@ The Web Searching Bot is a program designed to browse the internet as if it were
 ### Technical Stack
 
 1. **Programming Language:** Python
-2. **Web Scraping Library:** BeautifulSoup
-3. **Web Automation Library:** Selenium
-4. **Backend Framework:** Flask
-5. **Frontend Framework:** React (optional, if you want a user interface)
+2. **Web Automation Library:** Selenium
+3. **Web Scraping Library:** BeautifulSoup (optional, for more complex data extraction)
 
 ### Components
 
 1. **Web Crawler:** The web crawler will be responsible for navigating the web. It will use Selenium to simulate a real user's behavior, such as clicking on links and scrolling through pages.
 
-2. **Data Extractor:** The data extractor will parse the HTML of the web pages visited by the crawler and extract the relevant information. It will use BeautifulSoup for this purpose.
-
-3. **Backend Server:** The backend server will handle requests from the user, initiate the web crawler and data extractor, and return the results. It will be built using Flask.
-
-4. **Frontend Interface:** (Optional) If you want a user interface, a frontend can be built using React. This will allow users to input their search criteria and view the results in a user-friendly manner.
-
-5. **Scheduler:** A scheduler can be used to automate the web searching process at regular intervals.
+2. **Data Extractor:** The data extractor will parse the HTML of the web pages visited by the crawler and extract the relevant information. It can use Selenium's built-in methods for simple data extraction, or BeautifulSoup for more complex tasks.
 
 ### Workflow
 
-1. The user inputs their search criteria via the frontend interface or directly to the backend server.
-2. The backend server initiates the web crawler with the given criteria.
-3. The web crawler navigates the web, visiting pages that match the criteria.
-4. The data extractor parses the visited pages and extracts the relevant information.
-5. The extracted information is returned to the user.
+1. The user inputs their search criteria.
+2. The web crawler navigates the web, visiting pages that match the criteria.
+3. The data extractor parses the visited pages and extracts the relevant information.
+4. The extracted information is returned to the user.
 
-This is a high-level plan and can be further detailed based on your specific requirements. Once we agree on the tech spec, we can proceed to create a README and then the necessary code to start the project.
+## README
+
+### Web Searching Bot
+
+The Web Searching Bot is a Python-based application designed to browse the internet as if it were a user. It navigates through web pages, follows links, and extracts relevant information based on user-defined criteria. The bot is designed to overcome common web crawling issues such as rate limits.
+
+### Prerequisites
+
+- Python 3.7 or higher
+- Selenium Python library
+- WebDriver for your preferred browser (e.g., ChromeDriver for Google Chrome)
+
+### Installation
+
+1. Install Python and pip (Python package installer) on your system.
+2. Install the Selenium library using pip:
+
+```bash
+pip install selenium
+```
+
+3. Download the appropriate WebDriver for your preferred browser and add it to your system's PATH.
+
+### Usage
+
+1. Run the Python script:
+
+```bash
+python web_search_bot.py
+```
+
+2. Input your search criteria when prompted.
+
+### Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+### License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
