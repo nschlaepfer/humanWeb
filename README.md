@@ -7,8 +7,9 @@
 
 Meet humanWeb, a Python-based research assistant designed to leverage the cutting-edge capabilities of OpenAI's GPT-3.5-Turbo-16K model and Selenium WebDriver. It autonomously conducts web searches, extracts and summarizes pertinent data, generates comprehensive reports, and devises additional queries based on your initial input.
 
-![humanWeb logo](<img width="737" alt="Screenshot 2023-07-10 at 2 06 03 PM" src="https://github.com/nschlaepfer/humanWeb/assets/44988633/cb968665-8f16-41b5-93b7-db6ec0f5621f">
-)
+
+<img width="737" alt="Screenshot 2023-07-10 at 2 06 03 PM" src="https://github.com/nschlaepfer/humanWeb/assets/44988633/23b33a63-302c-4060-8232-f25f90978b75">
+
 
 ## Table of Contents 📑
 
