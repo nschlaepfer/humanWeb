@@ -1,77 +1,129 @@
-Sure, I can help you update the README and Tech Spec based on the code you provided. Here are the updated versions:
 
-## README
+# Momo AI: A Research Assistant Powered by GPT-3 🤖
 
-### Web Searching Bot
+[![GitHub license](https://img.shields.io/github/license/nschlaepfer/humanWeb)](https://github.com/nschlaepfer/humanWeb/blob/main/LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/nschlaepfer/humanWeb)](https://github.com/nschlaepfer/humanWeb/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/nschlaepfer/humanWeb)](https://github.com/nschlaepfer/humanWeb/network)
+[![Twitter Follow](https://img.shields.io/twitter/follow/nos_ult?style=social)](https://twitter.com/nos_ult)
 
-The Web Searching Bot is a Python-based application designed to automate Google searches. It navigates to Google, enters a user-provided search query, and extracts the search results. It also visits each search result page and extracts the page content. The extracted information is saved to a text file in a directory named "Searches".
+Momo AI is a Python program that uses GPT-3 and Selenium to perform web searches, extract and summarize information, and generate reports based on user queries. It can also create follow-up questions based on the summaries to help the user get more information or complete a task.
 
-### Prerequisites
+![Momo AI logo](momo-ai-logo.png)
 
-- Python 3.7 or higher
-- Selenium Python library
-- WebDriver for Google Chrome
-- Google Chrome Browser
+## Table of Contents 📑
 
-### Installation
+- [Features](#features-)
+- [Requirements](#requirements-)
+- [Installation](#installation-)
+- [Usage](#usage-)
+  - [Researcher Mode](#researcher-mode-)
+  - [Reporter Mode](#reporter-mode-)
+- [About](#about-)
+- [Possible UI](#possible-ui-)
+- [Future Features](#future-features-)
 
-1. Install Python and pip (Python package installer) on your system.
-2. Install the Selenium library using pip:
+## Features ✨
 
-```bash
-pip install selenium
+- Perform web searches using Google and extract the results
+- Extract the page content from the result links and process it with GPT-3
+- Generate summaries of the page content using GPT-3
+- Generate reports based on the summaries using GPT-3
+- Generate additional queries based on the initial query using GPT-3
+- Generate question-answer pairs based on the summaries using GPT-3
+- Save the search results, summaries, and reports to text files
+- Run the browser headlessly or with a graphical interface
+
+## Requirements 📋
+
+To run Momo AI, you need the following:
+
+- Python 3.6 or higher
+- OpenAI API key
+- Selenium Python package
+- Dotenv Python package
+- Chrome browser
+- Chrome driver
+
+## Installation 💻
+
+To install Momo AI, follow these steps:
+
+1. Clone or download this repository to your local machine.
+2. Create a virtual environment and activate it.
+3. Install the required packages using `pip install -r requirements.txt`.
+4. Get an OpenAI API key from https://beta.openai.com/ and save it as an environment variable in a `.env` file in the project directory. The file should look like this:
+
+```text
+OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
-3. Download the ChromeDriver for Google Chrome and add it to your system's PATH.
+5. Download the Chrome driver from https://chromedriver.chromium.org/downloads and save it in the project directory. Make sure the driver version matches your Chrome browser version.
+6. Run `python Researcher.py` or `python Reporter.py` depending on which mode you want to use.
 
-### Usage
+## Usage 🚀
 
-1. Run the Python script:
+Momo AI has two modes: Researcher and Reporter.
 
-```bash
-python web_search_bot.py
-```
+### Researcher Mode 🔎
 
-2. Input your search query when prompted.
+In Researcher mode, Momo AI will perform a series of web searches based on your initial query and generate additional queries using GPT-3. It will extract and summarize the search results, generate reports, and create question-answer pairs based on the summaries. It will save all the outputs to text files in the `Searches` and `Reports` directories.
 
-### Contributing
+To use Researcher mode, run `python Researcher.py` and follow these steps:
 
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+1. Enter the number of search results you want to process for each query. The default is 10.
+2. Enter your initial search query. For example, “How to write a research paper”.
+3. Wait for Momo AI to perform the search, extract and summarize the results, and generate a report.
 
-### License
+![Momo AI performing search](momo-ai-search.gif)
 
-[MIT](https://choosealicense.com/licenses/mit/)
+4. Momo AI will also generate additional queries based on your initial query using GPT-3. For example, “How to choose a research topic”, “How to do literature review”, etc.
+5. Momo AI will repeat steps 3 and 4 for each additional query until it reaches a limit or there are no more queries.
 
----
+![Momo AI generating additional queries](momo-ai-additional.gif)
 
-## Tech Spec
+6. Momo AI will also create question-answer pairs based on the summaries using GPT-3. For example, “Q: What is a research paper? A: A research paper is a document that presents an original argument or analysis based on evidence from various sources.”
+7. You can find all the outputs in the `Searches` and `Reports` directories.
 
-### Overview
+![Momo AI creating question-answer pairs](momo-ai-question.gif)
 
-The Web Searching Bot is a program designed to automate Google searches. It uses Selenium to interact with Google Chrome, performing searches and extracting search results and page content.
+### Reporter Mode 📰
 
-### Technical Stack
+In Reporter mode, Momo AI will perform a single web search based on your query and extract and summarize the results. It will generate a report based on the summaries using GPT-3 and save it to a text file in the `Reports` directory.
 
-1. **Programming Language:** Python
-2. **Web Automation Library:** Selenium
-3. **Browser:** Google Chrome
+To use Reporter mode, run `python Reporter.py` and follow these steps:
 
-### Components
+1. Enter whether you want to run the browser headlessly or not. If you choose “yes”, you will not see the browser window but Momo AI will still perform the search in the background. If you choose “no”, you will see the browser window and watch Momo AI perform the search.
+2. Enter the number of search results you want to process for your query. The default is 10.
+3. Enter your search query. For example, “Latest news on nuclear fusion”.
+4. Wait for Momo AI to perform the search, extract and summarize the results, and generate a report.
 
-1. **Search Performer:** This component uses Selenium to navigate to Google, enter a search query, and perform the search.
+![Momo AI generating report](momo-ai-report.gif)
 
-2. **Search Result Extractor:** This component uses Selenium to find the search result elements on the Google search results page and extract the title and URL of each result.
+5. You can find the report in the `Reports` directory.
 
-3. **Page Content Extractor:** This component uses Selenium to navigate to each search result page and extract the text content of the page.
+## About 🙋‍♂️
 
-### Workflow
+Momo AI is an open-source project created by [Nico Schlaepfer](https://github.com/nschlaepfer) as a personal assistant for research purposes. It uses [OpenAI](https://openai.com/) as its natural language processing engine and [Selenium](https://www.selenium.dev/) as its web automation tool. It is not affiliated with or endorsed by any of these organizations.
 
-1. The user runs the script and inputs their search query when prompted.
-2. The Search Performer navigates to Google and performs the search.
-3. The Search Result Extractor finds the search result elements and extracts the title and URL of each result.
-4. The Page Content Extractor navigates to each search result page and extracts the page content.
-5. The extracted information is saved to a text file in the "Searches" directory.
+Momo AI is still a work in progress and may have bugs or errors. If you find any issues or have any suggestions, please feel free to [open an issue](https://github.com/nschlaepfer/humanWeb/issues) or [submit a pull request](https://github.com/nschlaepfer/humanWeb/pulls).
 
-### Error Handling
+You can also follow me on [Twitter](https://twitter.com/nos_ult) for updates and news about Momo AI.
 
-The script includes exception handling to print an error message if something goes wrong during the search or extraction process. If the script encounters an error while extracting a search result, it will skip that result and move on to the next one.
+## Possible UI 💻
+
+A possible user interface for Momo AI could look something like this:
+
+![Momo AI UI mockup](momo-ai-ui.png)
+
+The UI would allow the user to enter their query, choose the mode, and see the outputs in a graphical way. It would also show the progress of the search, the summaries, and the reports. The user could also interact with the question-answer pairs and the additional queries generated by Momo AI. The UI would be built using a web framework such as [Flask](https://flask.palletsprojects.com/) or [Django](https://www.djangoproject.com/).
+
+## Future Features 🚧
+
+Some of the future features that are planned for Momo AI are:
+
+- Adding voice input and output using speech recognition and synthesis
+- Adding natural language understanding and dialogue management using GPT-3
+- Adding more sources of information such as Wikipedia, YouTube, etc.
+- Adding more modes of output such as slides, videos, etc.
+- Adding more customization options such as themes, fonts, etc.
+- Adding more languages support using translation APIs
