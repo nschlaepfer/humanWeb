@@ -16,8 +16,10 @@ Momo AI is a Python program that uses GPT-3.5-Turbo-16K and Selenium to perform 
 - [Requirements](#requirements-)
 - [Installation](#installation-)
 - [Usage](#usage-)
+  - [Websmart mode] (#websamart-mode)
   - [Researcher Mode](#researcher-mode-)
   - [Reporter Mode](#reporter-mode-)
+    
 - [About](#about-)
 - [Possible UI](#possible-ui-)
 - [Future Features](#future-features-)
@@ -91,7 +93,35 @@ OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 ## Usage 🚀
 
-Momo AI has two modes: Researcher and Reporter.
+Momo AI has three modes: Websmart, Researcher and Reporter.
+
+
+# Websmart mode 🖲️
+
+This script is designed to generate a detailed report based on a user's query using GPT-3 and a chain of thought from the smartGPT project. Here's a step-by-step guide on how it works:
+
+1. **User Input**: The user is prompted to enter the number of search results they want to process, their initial query, and the number of steps (queries) they want to perform.
+
+2. **Additional Query Generation**: The script generates additional queries based on the initial query using GPT-3. These queries are designed to help gather the most information or complete a task in order.
+
+3. **Search and Extraction**: For each query, the script performs a Google search and extracts the search results. The number of results extracted is based on the user's input. The script also navigates to each search result page and extracts the page content.
+
+4. **Processing with GPT-3**: The script then processes the page content with GPT-3, extracting unique and interesting facts and analytical information. This information is then summarized and stored.
+
+5. **Report Creation**: Once all queries have been processed, the script creates a report based on the summaries. The report is generated in three steps: 
+   - First, a report is generated using GPT-3.
+   - Then, a researcher role is simulated to investigate the report and list any flaws or faulty logic.
+   - Finally, a resolver role is simulated to improve the report based on the researcher's feedback. The best report is selected based on a scoring function.
+
+6. **QA Creation**: The script also creates a QA (Question-Answer) pair based on the query and the generated report. If the QA pair results in a new query, it is added to the list of queries to be processed, provided the maximum number of additional queries has not been reached.
+
+7. **Iteration**: The script iterates over the list of queries, performing the search, extraction, processing, report creation, and QA creation steps for each query. The iteration stops when all queries have been processed or when the maximum number of iterations (as specified by the user) has been reached.
+
+8. **Completion**: Once all queries have been processed, the script closes the browser and ends.
+
+The script also creates a debug log file to log the generated additional queries and any errors encountered during the process. The search results, summaries, and reports are saved in separate files in the "Searches" and "Reports" directories respectively.
+
+Please note that this script uses the OpenAI API, and you will need to provide your OpenAI API key for it to work. Also, the script uses Selenium to perform the Google searches and extract the search results, so you will need to have the Selenium WebDriver installed and configured correctly.
 
 ### Researcher Mode 🔎
 
