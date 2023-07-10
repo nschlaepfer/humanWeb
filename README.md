@@ -41,6 +41,8 @@ humanWeb is equipped with the following features:
 
 - **Data Storage**: All search results, summaries, and reports are stored in separate files within the `Searches` and `Reports` directories for convenient access and further use.
 
+
+
 ## Requirements 📋
 
 To run humanWeb, you will need:
@@ -115,7 +117,6 @@ OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 5. Now you should be able to use ChromeDriver from anywhere on your system.
 
 Please note that you need to have administrative privileges to perform some of these steps. Also, remember to replace the paths in the commands with the actual paths where your `chromedriver` file is located.
-
 ## Usage 🚀
 
 humanWeb operates in Websmart mode, which performs a comprehensive sequence of tasks, including web search, information extraction, data summarization, report generation, and additional query formulation. 
