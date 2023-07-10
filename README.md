@@ -65,6 +65,55 @@ OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 5. Download the ChromeDriver from https://chromedriver.chromium.org/downloads and save it in the project directory. Ensure that the driver version matches your Chrome browser version.
 
+
+## macOS
+
+1. Download the ChromeDriver from the [official website](https://chromedriver.chromium.org/downloads). Make sure to download the version that matches your installed version of Google Chrome.
+
+2. Once downloaded, unzip the file. You'll get a file named `chromedriver`.
+
+3. Open Terminal and navigate to the directory where `chromedriver` is located. For example, if it's in your Downloads folder, you'd use `cd ~/Downloads`.
+
+4. Move the `chromedriver` to `/usr/local/bin` directory, which is in the PATH by default. Use the following command: `mv chromedriver /usr/local/bin`.
+
+5. Now you should be able to use ChromeDriver from anywhere on your system.
+
+## Linux
+
+1. Download the ChromeDriver from the [official website](https://chromedriver.chromium.org/downloads). Make sure to download the version that matches your installed version of Google Chrome.
+
+2. Once downloaded, unzip the file. You'll get a file named `chromedriver`.
+
+3. Open Terminal and navigate to the directory where `chromedriver` is located. For example, if it's in your Downloads folder, you'd use `cd ~/Downloads`.
+
+4. Move the `chromedriver` to `/usr/local/bin` directory, which is in the PATH by default. Use the following command: `sudo mv chromedriver /usr/local/bin`.
+
+5. Now you should be able to use ChromeDriver from anywhere on your system.
+
+## Windows
+
+1. Download the ChromeDriver from the [official website](https://chromedriver.chromium.org/downloads). Make sure to download the version that matches your installed version of Google Chrome.
+
+2. Once downloaded, unzip the file. You'll get a file named `chromedriver.exe`.
+
+3. You need to add the directory containing `chromedriver.exe` to your system's PATH. Here's how:
+
+   - Right-click on 'My Computer' or 'This PC' and go to Properties.
+
+   - Click on 'Advanced system settings'.
+
+   - Click on 'Environment Variables...'.
+
+   - In the 'System variables' section, find the 'Path' variable, select it and click on 'Edit...'.
+
+   - In the 'Variable value' field, add the path to the directory containing `chromedriver.exe`. Make sure to separate it from existing paths with a semicolon (`;`).
+
+4. Click OK on all windows to save the changes.
+
+5. Now you should be able to use ChromeDriver from anywhere on your system.
+
+Please note that you need to have administrative privileges to perform some of these steps. Also, remember to replace the paths in the commands with the actual paths where your `chromedriver` file is located.
+
 ## Usage 🚀
 
 humanWeb operates in Websmart mode, which performs a comprehensive sequence of tasks, including web search, information extraction, data summarization, report generation, and additional query formulation. 
