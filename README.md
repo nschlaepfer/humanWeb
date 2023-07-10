@@ -1,12 +1,12 @@
 
-# Momo AI: A Research Assistant Powered by GPT-3 🤖
+# Momo AI: A Research Assistant Powered by GPT-3.5-Turbo-16K 🤖
 
 [![GitHub license](https://img.shields.io/github/license/nschlaepfer/humanWeb)](https://github.com/nschlaepfer/humanWeb/blob/main/LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/nschlaepfer/humanWeb)](https://github.com/nschlaepfer/humanWeb/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/nschlaepfer/humanWeb)](https://github.com/nschlaepfer/humanWeb/network)
 [![Twitter Follow](https://img.shields.io/twitter/follow/nos_ult?style=social)](https://twitter.com/nos_ult)
 
-Momo AI is a Python program that uses GPT-3 and Selenium to perform web searches, extract and summarize information, and generate reports based on user queries. It can also create follow-up questions based on the summaries to help the user get more information or complete a task.
+Momo AI is a Python program that uses GPT-3.5-Turbo-16K and Selenium to perform web searches, extract and summarize information, and generate reports based on user queries. It can also create follow-up questions based on the summaries to help the user get more information or complete a task.
 
 ![Momo AI logo](momo-ai-logo.png)
 
@@ -25,11 +25,11 @@ Momo AI is a Python program that uses GPT-3 and Selenium to perform web searches
 ## Features ✨
 
 - Perform web searches using Google and extract the results
-- Extract the page content from the result links and process it with GPT-3
-- Generate summaries of the page content using GPT-3
-- Generate reports based on the summaries using GPT-3
-- Generate additional queries based on the initial query using GPT-3
-- Generate question-answer pairs based on the summaries using GPT-3
+- Extract the page content from the result links and process it with GPT-3.5-Turbo-16K
+- Generate summaries of the page content using GPT-3.5-Turbo-16K
+- Generate reports based on the summaries using GPT-3.5-Turbo-16K
+- Generate additional queries based on the initial query using GPT-3.5-Turbo-16K
+- Generate question-answer pairs based on the summaries using GPT-3.5-Turbo-16K
 - Save the search results, summaries, and reports to text files
 - Run the browser headlessly or with a graphical interface
 
@@ -66,7 +66,7 @@ Momo AI has two modes: Researcher and Reporter.
 
 ### Researcher Mode 🔎
 
-In Researcher mode, Momo AI will perform a series of web searches based on your initial query and generate additional queries using GPT-3. It will extract and summarize the search results, generate reports, and create question-answer pairs based on the summaries. It will save all the outputs to text files in the `Searches` and `Reports` directories.
+In Researcher mode, Momo AI will perform a series of web searches based on your initial query and generate additional queries using GPT-3.5-Turbo-16K. It will extract and summarize the search results, generate reports, and create question-answer pairs based on the summaries. It will save all the outputs to text files in the `Searches` and `Reports` directories.
 
 To use Researcher mode, run `python Researcher.py` and follow these steps:
 
@@ -76,19 +76,19 @@ To use Researcher mode, run `python Researcher.py` and follow these steps:
 
 ![Momo AI performing search](momo-ai-search.gif)
 
-4. Momo AI will also generate additional queries based on your initial query using GPT-3. For example, “How to choose a research topic”, “How to do literature review”, etc.
+4. Momo AI will also generate additional queries based on your initial query using GPT-3.5-Turbo-16K. For example, “How to choose a research topic”, “How to do literature review”, etc.
 5. Momo AI will repeat steps 3 and 4 for each additional query until it reaches a limit or there are no more queries.
 
 ![Momo AI generating additional queries](momo-ai-additional.gif)
 
-6. Momo AI will also create question-answer pairs based on the summaries using GPT-3. For example, “Q: What is a research paper? A: A research paper is a document that presents an original argument or analysis based on evidence from various sources.”
+6. Momo AI will also create question-answer pairs based on the summaries using GPT-3.5-Turbo-16K. For example, “Q: What is a research paper? A: A research paper is a document that presents an original argument or analysis based on evidence from various sources.”
 7. You can find all the outputs in the `Searches` and `Reports` directories.
 
 ![Momo AI creating question-answer pairs](momo-ai-question.gif)
 
 ### Reporter Mode 📰
 
-In Reporter mode, Momo AI will perform a single web search based on your query and extract and summarize the results. It will generate a report based on the summaries using GPT-3 and save it to a text file in the `Reports` directory.
+In Reporter mode, Momo AI will perform a single web search based on your query and extract and summarize the results. It will generate a report based on the summaries using GPT-3.5-Turbo-16K and save it to a text file in the `Reports` directory.
 
 To use Reporter mode, run `python Reporter.py` and follow these steps:
 
@@ -115,15 +115,16 @@ A possible user interface for Momo AI could look something like this:
 
 ![Momo AI UI mockup](momo-ai-ui.png)
 
-The UI would allow the user to enter their query, choose the mode, and see the outputs in a graphical way. It would also show the progress of the search, the summaries, and the reports. The user could also interact with the question-answer pairs and the additional queries generated by Momo AI. The UI would be built using a web framework such as [Flask](https://flask.palletsprojects.com/) or [Django](https://www.djangoproject.com/).
+The UI would allow the user to enter their query, choose the mode, and see the outputs in a graphical way. It would also show the progress of the search, the summaries, and the reports using a progress bar and a pie chart. The user could also interact with the question-answer pairs and the additional queries generated by Momo AI using buttons and dropdown menus. The UI would be built using a web framework such as [Flask](https://flask.palletsprojects.com/) or [Django](https://www.djangoproject.com/).
 
 ## Future Features 🚧
 
 Some of the future features that are planned for Momo AI are:
 
 - Adding voice input and output using speech recognition and synthesis
-- Adding natural language understanding and dialogue management using GPT-3
+- Adding natural language understanding and dialogue management using GPT-3.5-Turbo-16K
 - Adding more sources of information such as Wikipedia, YouTube, etc.
 - Adding more modes of output such as slides, videos, etc.
 - Adding more customization options such as themes, fonts, etc.
 - Adding more languages support using translation APIs
+- Upgrading to GPT-4 when it becomes available
