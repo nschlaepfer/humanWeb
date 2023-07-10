@@ -33,7 +33,7 @@ debug_log = open("debug_log.txt", "w")
 
 def generate_additional_queries(query, num_queries):
     print("Generating additional queries with GPT-3...")
-    system_prompt = f"Given this query, come up with {num_queries} more queries that will help get the most information or complete a task in order."
+    system_prompt = f"Given this query, come up with {num_queries} more queries that will help get the most information or complete a task in order. Come up with the most consise and clear queries for google."
     messages = [{'role': 'system', 'content': system_prompt}, {'role': 'user', 'content': query}]
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo", #changed since it is smaller
@@ -80,6 +80,12 @@ def extract_search_results(query, num_results, filename, summary_filename):
             try:
                 title = result.find_element(By.CSS_SELECTOR, "h3").text  # Extract the title
                 link = result.find_element(By.CSS_SELECTOR, "a").get_attribute("href")  # Extract the URL
+                
+                # Skip processing if the link points to a YouTube video
+                if "youtube.com" in link:
+                    print(f"Skipping Result {i}: {title} ({link}) - YouTube videos are not supported")
+                    continue
+                
                 print(f"Result {i}: {title} ({link})")  # Process the search result as desired
                 f.write(f"Result {i}: {title} ({link})\n")  # Write the result to the file
                 links.append((title, link))  # Store the title and link together
@@ -101,6 +107,7 @@ def extract_search_results(query, num_results, filename, summary_filename):
                         print(f"GPT-3 Response: {gpt_response}")
             except Exception as e:
                 print(f"Error loading page {link}: {e}")
+
 
 # Using the chain of thought from smartGPT project to process the results takes alot longer.
 def process_results_with_gpt3(title, link, content, summary_filename):
@@ -154,7 +161,7 @@ def create_report(query, initial_query, num_results, all_summaries):
             model="gpt-3.5-turbo-16k",
             messages=researcher_messages
         )
-        time.sleep(2)
+        time.sleep(5)
         researcher_output = researcher_response.choices[0].message['content'].strip()
 
         # Resolver step
@@ -164,7 +171,7 @@ def create_report(query, initial_query, num_results, all_summaries):
             model="gpt-3.5-turbo-16k",
             messages=resolver_messages
         )
-        time.sleep(2)
+        time.sleep(5)
         resolver_output = resolver_response.choices[0].message['content'].strip()
 
         # Score the resolver output (you can replace this with your own scoring function)
