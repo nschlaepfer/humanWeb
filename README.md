@@ -163,5 +163,3 @@ Some of the future features that are planned for Momo AI are:
   - ![Progress bar](https://progress-bar.dev/90/)
 - Adding more languages support using translation APIs
   - ![Progress bar](https://progress-bar.dev/95/)
-- Upgrading to GPT-4 when it becomes available
-  - ![Progress bar](https://progress-bar.dev/0/)
