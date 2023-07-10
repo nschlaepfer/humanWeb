@@ -128,6 +128,10 @@ Run humanWeb with `python humanWeb.py` and follow the prompts. You will be asked
 
 humanWeb will then autonomously perform a web search, extract and summarize results, generate additional queries, and formulate a comprehensive report based on the collected data. If the generated report doesn't meet a certain quality threshold, humanWeb restarts the search process to ensure satisfactory output.
 
+<img width="1054" alt="Screenshot 2023-07-10 at 2 05 06 PM" src="https://github.com/nschlaepfer/humanWeb/assets/44988633/fec213c6-1b6f-48e2-9ed4-5d3ad4bdb346">
+
+<img width="1054" alt="Screenshot 2023-07-10 at 2 05 22 PM" src="https://github.com/nschlaepfer/humanWeb/assets/44988633/6f315981-e908-45b2-99f9-cdff6fe5855f">
+
 ## About 🙋‍♂️
 
 humanWeb is an open-source project developed by [Nico Schlaepfer](https://github.com/nschlaepfer). It was designed as a personal research assistant tool, utilizing [OpenAI](https://openai.com/) for natural language processing and [Selenium](https://www.selenium.dev/) for web automation. This project is not affiliated with or endorsed by any of these organizations.
