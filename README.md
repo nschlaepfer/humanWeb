@@ -5,14 +5,11 @@
 [![GitHub forks](https://img.shields.io/github/forks/nschlaepfer/humanWeb)](https://github.com/nschlaepfer/humanWeb/network)
 [![Twitter Follow](https://img.shields.io/twitter/follow/nos_ult?style=social)](https://twitter.com/nos_ult)
 
-Meet humanWeb, a Python-based research assistant designed to leverage the cutting-edge capabilities of OpenAI's GPT-3.5-Turbo-16K model and Selenium WebDriver. It autonomously conducts web searches, extracts and summarizes pertinent data, generates comprehensive reports, and devises additional queries based on your initial input.
-
+Welcome to humanWeb, a Python-based research assistant that harnesses the power of OpenAI's GPT-3.5-Turbo-16K model and Selenium WebDriver. This tool autonomously conducts web searches, extracts and summarizes relevant data, generates comprehensive reports, and formulates additional queries based on your initial input.
 
 ![HumanWEB](https://github.com/nschlaepfer/humanWeb/assets/44988633/0e826ed0-c581-44d8-a72e-4b78832d8884)
 
-
 <img width="737" alt="Screenshot 2023-07-10 at 2 06 03 PM" src="https://github.com/nschlaepfer/humanWeb/assets/44988633/23b33a63-302c-4060-8232-f25f90978b75">
-
 
 ## Table of Contents 📑
 
@@ -32,19 +29,17 @@ Meet humanWeb, a Python-based research assistant designed to leverage the cuttin
 
 humanWeb is equipped with the following features:
 
-- **Web Search & Information Extraction**: Using Selenium WebDriver, humanWeb autonomously performs web searches based on your queries. It then extracts and saves the search results for further use.
+- **Web Search & Information Extraction**: humanWeb autonomously performs web searches based on your queries using Selenium WebDriver. It then extracts and saves the search results for further analysis.
 
-- **Data Summarization with GPT-3.5-Turbo-16K**: humanWeb uses the GPT-3.5-Turbo-16K model to analyze the extracted web page content and pinpoint unique, relevant information. This information is then summarized and stored.
+- **Data Summarization with GPT-3.5-Turbo-16K**: humanWeb leverages the GPT-3.5-Turbo-16K model to analyze the extracted web page content and pinpoint unique, relevant information. This information is then summarized and stored for future use.
 
-- **Report Generation**: Through GPT-3.5-Turbo-16K, humanWeb generates detailed reports based on the summarized data. These reports provide synthesized insights on your initial query.
+- **Report Generation**: humanWeb generates detailed reports based on the summarized data using GPT-3.5-Turbo-16K. These reports provide synthesized insights on your initial query.
 
-- **Additional Query Formulation**: To aid you in gathering more information or completing a task, humanWeb devises additional queries related to your initial one. These queries are created using the GPT-3.5-Turbo-16K model.
+- **Additional Query Formulation**: To help you gather more information or complete a task, humanWeb formulates additional queries related to your initial one using the GPT-3.5-Turbo-16K model.
 
 - **Debug Logging**: humanWeb maintains a debug log file that records the additional queries generated and any errors encountered during the process.
 
-- **Data Storage**: All search results, summaries, and reports are stored in separate files within the `Searches` and `Reports` directories for convenient access and further use.
-
-
+- **Data Storage**: All search results, summaries, and reports are stored in separate files within the `Searches` and `Reports` directories for convenient access and future use.
 
 ## Requirements 📋
 
@@ -72,8 +67,7 @@ OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 5. Download the ChromeDriver from https://chromedriver.chromium.org/downloads and save it in the project directory. Ensure that the driver version matches your Chrome browser version.
 
-
-## macOS
+### macOS
 
 1. Download the ChromeDriver from the [official website](https://chromedriver.chromium.org/downloads). Make sure to download the version that matches your installed version of Google Chrome.
 
@@ -85,7 +79,7 @@ OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 5. Now you should be able to use ChromeDriver from anywhere on your system.
 
-## Linux
+### Linux
 
 1. Download the ChromeDriver from the [official website](https://chromedriver.chromium.org/downloads). Make sure to download the version that matches your installed version of Google Chrome.
 
@@ -97,7 +91,7 @@ OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 5. Now you should be able to use ChromeDriver from anywhere on your system.
 
-## Windows
+### Windows
 
 1. Download the ChromeDriver from the [official website](https://chromedriver.chromium.org/downloads). Make sure to download the version that matches your installed version of Google Chrome.
 
@@ -111,7 +105,9 @@ OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
    - Click on 'Environment Variables...'.
 
-   - In the 'System variables' section, find the 'Path' variable, select it and click on 'Edit...'.
+   - In the 'System variables' section, find the 'Path' variable, select it and click on 'Edit
+
+...'.
 
    - In the 'Variable value' field, add the path to the directory containing `chromedriver.exe`. Make sure to separate it from existing paths with a semicolon (`;`).
 
@@ -120,11 +116,12 @@ OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 5. Now you should be able to use ChromeDriver from anywhere on your system.
 
 Please note that you need to have administrative privileges to perform some of these steps. Also, remember to replace the paths in the commands with the actual paths where your `chromedriver` file is located.
+
 ## Usage 🚀
 
 humanWeb operates in Websmart mode, which performs a comprehensive sequence of tasks, including web search, information extraction, data summarization, report generation, and additional query formulation. 
 
-Run humanWeb with `python humanWeb.py` and follow the prompts. You will be asked to input:
+To run humanWeb, use the command `python humanWeb.py` and follow the prompts. You will be asked to input:
 
 1. The number of search results you want to process.
 2. Your initial query.
@@ -146,7 +143,7 @@ For updates and news about humanWeb, you can follow [Nico Schlaepfer](https://tw
 
 ## Future Developments 🚧
 
-We're continuously improving humanWeb. Here are some potential enhancements for future versions:
+We're continuously working on improving humanWeb. Here are some potential enhancements for future versions:
 
 - Adding a user interface for intuitive interaction.
 - Enhancing the report generation process with more dynamic and user-tailored outputs.
