@@ -168,3 +168,8 @@ We're continuously working on improving humanWeb. Here are some potential enhanc
 - Implementing more customization options to adjust functionality according to user needs.
 - Improving error handling and providing more detailed logs.
 - proved layout with all the images nicely arranged in the README file on your GitHub repository.
+
+<div align="center">
+  <img src="humanWeb-progress.png" alt="humanWeb progress bar" width="500"/>
+  <p>Progress towards future developments</p>
+</div>
