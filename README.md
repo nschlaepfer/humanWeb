@@ -156,8 +156,6 @@ For updates and news about humanWeb, you can follow [Nico Schlaepfer](https://tw
   <img src="https://github.com/nschlaepfer/humanWeb/assets/44988633/9a77b2ab-aa42-483a-82a4-9b6c34bf7d20" alt="_17439a69-fa52-41b2-b2e4-a52da7955c33" width="200"/>
   <img src="https://github.com/nschlaepfer/humanWeb/assets/44988633/4c9f7983-74c3-4b89-9a19-74d338cddb30" alt="_4713be32-4b6b-41df-a163-11aa87a52c74" width="200"/>
   <img src="https://github.com/nschlaepfer/humanWeb/assets/44988633/c4d9928e-23b4-4eca-a829-bb4d6ddce6d2" alt="_8dad5291-e223-40bf-ab61-1bdc18eeceb7" width="200"/>
-  <br/>
-  <img src="https://github.com/nschlaepfer/humanWeb/assets/44988633/abd62550-6b5c-42b7-8e4a-93709986c555" alt="" width="200"/>
 </div>
 
 
@@ -172,5 +170,4 @@ We're continuously working on improving humanWeb. Here are some potential enhanc
 - Implementing more customization options to adjust functionality according to user needs.
 - Improving error handling and providing more detailed logs.
 
-![logo10](https://github.com/nschlaepfer/humanWeb/assets/44988633/67d7bbcb-3b33-45e5-a43a-8eaaa333148c)
 
