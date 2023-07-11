@@ -117,11 +117,6 @@ OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 Please note that you need to have administrative privileges to perform some of these steps. Also, remember to replace the paths in the commands with the actual paths where your `chromedriver` file is located.
 
-
-![logo8](https://github.com/nschlaepfer/humanWeb/assets/44988633/a6f02332-e0c3-4463-a9fa-0a5e0724fce5)
-
-
-
 ## Usage 🚀
 
 humanWeb operates in Websmart mode, which performs a comprehensive sequence of tasks, including web search, information extraction, data summarization, report generation, and additional query formulation. 
@@ -151,6 +146,41 @@ Please note that humanWeb is a work in progress and may contain bugs or errors. 
 
 For updates and news about humanWeb, you can follow [Nico Schlaepfer](https://twitter.com/nos_ult) on Twitter.
 
+
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 10px;
+    }
+
+    .image-grid img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="image-grid">
+    <img src="https://github.com/nschlaepfer/humanWeb/assets/44988633/79f74d97-14b0-4739-a781-9978c803948c" alt="logo12">
+    <img src="https://github.com/nschlaepfer/humanWeb/assets/44988633/b400e1e4-471e-42bc-8817-96af67edc548" alt="logo11">
+    <img src="https://github.com/nschlaepfer/humanWeb/assets/44988633/9280f0e4-861c-4a57-828d-36cf59213394" alt="logo10">
+    <img src="https://github.com/nschlaepfer/humanWeb/assets/44988633/2921eee3-c88d-43e7-bf72-81cf55285e07" alt="logo8">
+    <img src="https://github.com/nschlaepfer/humanWeb/assets/44988633/00cc6226-7660-4d97-b387-842aa7dfb849" alt="7">
+    <img src="https://github.com/nschlaepfer/humanWeb/assets/44988633/17ff9d73-1797-4414-9df9-b66feeb162b5" alt="6">
+    <img src="https://github.com/nschlaepfer/humanWeb/assets/44988633/9a77b2ab-aa42-483a-82a4-9b6c34bf7d20" alt="_17439a69-fa52-41b2-b2e4-a52da7955c33">
+    <img src="https://github.com/nschlaepfer/humanWeb/assets/44988633/4c9f7983-74c3-4b89-9a19-74d338cddb30" alt="_4713be32-4b6b-41df-a163-11aa87a52c74">
+    <img src="https://github.com/nschlaepfer/humanWeb/assets/44988633/c4d9928e-23b4-4eca-a829-bb4d6ddce6d2" alt="_8dad5291-e223-40bf-ab61-1bdc18eeceb7">
+    <img src="https://github.com/nschlaepfer/humanWeb/assets/44988633/abd62550-6b5c-42b7-8e4a-93709986c555" alt="">
+  </div>
+</body>
+</html>
+
+
+
 ## Future Developments 🚧
 
 We're continuously working on improving humanWeb. Here are some potential enhancements for future versions:
@@ -160,3 +190,6 @@ We're continuously working on improving humanWeb. Here are some potential enhanc
 - Expanding the search functionality to include more sources of information.
 - Implementing more customization options to adjust functionality according to user needs.
 - Improving error handling and providing more detailed logs.
+
+![logo10](https://github.com/nschlaepfer/humanWeb/assets/44988633/67d7bbcb-3b33-45e5-a43a-8eaaa333148c)
+
