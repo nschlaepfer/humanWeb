@@ -135,9 +135,6 @@ humanWeb will then autonomously perform a web search, extract and summarize resu
 
 
 
-![logo12](https://github.com/nschlaepfer/humanWeb/assets/44988633/9f3289bb-cc20-458a-a943-a428c596301d)
-
-
 ## About 🙋‍♂️
 
 humanWeb is an open-source project developed by [Nico Schlaepfer](https://github.com/nschlaepfer). It was designed as a personal research assistant tool, utilizing [OpenAI](https://openai.com/) for natural language processing and [Selenium](https://www.selenium.dev/) for web automation. This project is not affiliated with or endorsed by any of these organizations.
@@ -147,37 +144,21 @@ Please note that humanWeb is a work in progress and may contain bugs or errors. 
 For updates and news about humanWeb, you can follow [Nico Schlaepfer](https://twitter.com/nos_ult) on Twitter.
 
 
-<!DOCTYPE html>
-<html>
-<head>
-  <style>
-    .image-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-gap: 10px;
-    }
-
-    .image-grid img {
-      max-width: 100%;
-      height: auto;
-    }
-  </style>
-</head>
-<body>
-  <div class="image-grid">
-    <img src="https://github.com/nschlaepfer/humanWeb/assets/44988633/79f74d97-14b0-4739-a781-9978c803948c" alt="logo12">
-    <img src="https://github.com/nschlaepfer/humanWeb/assets/44988633/b400e1e4-471e-42bc-8817-96af67edc548" alt="logo11">
-    <img src="https://github.com/nschlaepfer/humanWeb/assets/44988633/9280f0e4-861c-4a57-828d-36cf59213394" alt="logo10">
-    <img src="https://github.com/nschlaepfer/humanWeb/assets/44988633/2921eee3-c88d-43e7-bf72-81cf55285e07" alt="logo8">
-    <img src="https://github.com/nschlaepfer/humanWeb/assets/44988633/00cc6226-7660-4d97-b387-842aa7dfb849" alt="7">
-    <img src="https://github.com/nschlaepfer/humanWeb/assets/44988633/17ff9d73-1797-4414-9df9-b66feeb162b5" alt="6">
-    <img src="https://github.com/nschlaepfer/humanWeb/assets/44988633/9a77b2ab-aa42-483a-82a4-9b6c34bf7d20" alt="_17439a69-fa52-41b2-b2e4-a52da7955c33">
-    <img src="https://github.com/nschlaepfer/humanWeb/assets/44988633/4c9f7983-74c3-4b89-9a19-74d338cddb30" alt="_4713be32-4b6b-41df-a163-11aa87a52c74">
-    <img src="https://github.com/nschlaepfer/humanWeb/assets/44988633/c4d9928e-23b4-4eca-a829-bb4d6ddce6d2" alt="_8dad5291-e223-40bf-ab61-1bdc18eeceb7">
-    <img src="https://github.com/nschlaepfer/humanWeb/assets/44988633/abd62550-6b5c-42b7-8e4a-93709986c555" alt="">
-  </div>
-</body>
-</html>
+<div align="center">
+  <img src="https://github.com/nschlaepfer/humanWeb/assets/44988633/79f74d97-14b0-4739-a781-9978c803948c" alt="logo12" width="200"/>
+  <img src="https://github.com/nschlaepfer/humanWeb/assets/44988633/b400e1e4-471e-42bc-8817-96af67edc548" alt="logo11" width="200"/>
+  <img src="https://github.com/nschlaepfer/humanWeb/assets/44988633/9280f0e4-861c-4a57-828d-36cf59213394" alt="logo10" width="200"/>
+  <br/>
+  <img src="https://github.com/nschlaepfer/humanWeb/assets/44988633/2921eee3-c88d-43e7-bf72-81cf55285e07" alt="logo8" width="200"/>
+  <img src="https://github.com/nschlaepfer/humanWeb/assets/44988633/00cc6226-7660-4d97-b387-842aa7dfb849" alt="7" width="200"/>
+  <img src="https://github.com/nschlaepfer/humanWeb/assets/44988633/17ff9d73-1797-4414-9df9-b66feeb162b5" alt="6" width="200"/>
+  <br/>
+  <img src="https://github.com/nschlaepfer/humanWeb/assets/44988633/9a77b2ab-aa42-483a-82a4-9b6c34bf7d20" alt="_17439a69-fa52-41b2-b2e4-a52da7955c33" width="200"/>
+  <img src="https://github.com/nschlaepfer/humanWeb/assets/44988633/4c9f7983-74c3-4b89-9a19-74d338cddb30" alt="_4713be32-4b6b-41df-a163-11aa87a52c74" width="200"/>
+  <img src="https://github.com/nschlaepfer/humanWeb/assets/44988633/c4d9928e-23b4-4eca-a829-bb4d6ddce6d2" alt="_8dad5291-e223-40bf-ab61-1bdc18eeceb7" width="200"/>
+  <br/>
+  <img src="https://github.com/nschlaepfer/humanWeb/assets/44988633/abd62550-6b5c-42b7-8e4a-93709986c555" alt="" width="200"/>
+</div>
 
 
 
