@@ -1,6 +1,4 @@
-Certainly! Here's an improved layout for all the images in your GitHub README.md file:
 
-```markdown
 # humanWeb: Your Personal AI-Powered Research Assistant 🤖
 
 [![GitHub license](https://img.shields.io/github/license/nschlaepfer/humanWeb)](https://github.com/nschlaepfer/humanWeb/blob/main/LICENSE)
