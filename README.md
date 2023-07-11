@@ -117,6 +117,11 @@ OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 Please note that you need to have administrative privileges to perform some of these steps. Also, remember to replace the paths in the commands with the actual paths where your `chromedriver` file is located.
 
+
+![logo8](https://github.com/nschlaepfer/humanWeb/assets/44988633/a6f02332-e0c3-4463-a9fa-0a5e0724fce5)
+
+
+
 ## Usage 🚀
 
 humanWeb operates in Websmart mode, which performs a comprehensive sequence of tasks, including web search, information extraction, data summarization, report generation, and additional query formulation. 
@@ -132,6 +137,11 @@ humanWeb will then autonomously perform a web search, extract and summarize resu
 <img width="1054" alt="Screenshot 2023-07-10 at 2 05 06 PM" src="https://github.com/nschlaepfer/humanWeb/assets/44988633/fec213c6-1b6f-48e2-9ed4-5d3ad4bdb346">
 
 <img width="1054" alt="Screenshot 2023-07-10 at 2 05 22 PM" src="https://github.com/nschlaepfer/humanWeb/assets/44988633/6f315981-e908-45b2-99f9-cdff6fe5855f">
+
+
+
+![logo12](https://github.com/nschlaepfer/humanWeb/assets/44988633/9f3289bb-cc20-458a-a943-a428c596301d)
+
 
 ## About 🙋‍♂️
 
