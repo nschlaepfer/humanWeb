@@ -108,8 +108,6 @@ OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
    - In the 'System variables' section, find the 'Path' variable, select it and click on 'Edit
 
-...'.
-
    - In the 'Variable value' field, add the path to the directory containing `chromedriver.exe`. Make sure to separate it from existing paths with a semicolon (`;`).
 
 4. Click OK on all windows to save the changes.
