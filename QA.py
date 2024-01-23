@@ -5,13 +5,17 @@ client = OpenAI()
 import os
 import time
 
-def create_qa(query, summary_filename):
+def create_qa(query, summary_filename, model_id):  # Add model_id as a parameter
     print("Creating QA...")
+    if not os.path.exists(summary_filename):  # Check if the file exists
+        print(f"Could not find file: {summary_filename}")
+        return None
+
     try:
         with open(summary_filename, "r") as sf:  # Open the summary file
             summaries = sf.read()
             messages = [{'role': 'system', 'content': summaries}, {'role': 'user', 'content': f"How well does this report answer the query '{query}' on a scale of 1-10? If the rating is less than 10, why?"}]
-            response = client.chat.completions.create(model="gpt-4-vision-preview",
+            response = client.chat.completions.create(model=model_id,  # Use the passed model_id
             messages=messages)
             gpt_qa = response.choices[0].message.content.strip()
             print(f"humanWeb QA: {gpt_qa}")

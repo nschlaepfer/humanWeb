@@ -2,9 +2,11 @@
 import os
 import json
 import time
-
+import re
 from dotenv import load_dotenv
-import openai
+from openai import OpenAI
+
+client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
@@ -17,7 +19,6 @@ from retry_decorator import retry_on_service_unavailable
 load_dotenv()  # take environment variables from .env.
 
 # Get OpenAI API key from environment variable
-openai.api_key = os.getenv('OPENAI_API_KEY')
 
 options = webdriver.ChromeOptions()
 options.add_argument('headless')
@@ -64,27 +65,15 @@ def generate_additional_queries(query, num_queries, model_id):
     print("Generating additional queries with {model_id}...")
     system_prompt = f"Given this query, come up with {num_queries} more queries that will help get the most information or complete a task in order. Come up with the most consise and clear queries for google."
     messages = [{'role': 'system', 'content': system_prompt}, {'role': 'user', 'content': query}]
-    response = openai.ChatCompletion.create(
-        model=model_id, #changed since it is smaller
-        messages=messages
-    )
-    additional_queries = response.choices[0].message['content'].strip().split('\n')[:num_queries]
+    response = client.chat.completions.create(model=model_id, #changed since it is smaller
+    messages=messages)
+    additional_queries = response.choices[0].message.content.strip().split('\n')[:num_queries]
     # Write to debug log
     debug_log.write(f"Generated additional queries: {additional_queries}\n")
     return additional_queries
 
 
 
-# Ideas to update this function and project - then from that make new project about vision seeing computer and using mouse.:
-# - Add more websitese to the list to use for like bing.com, duckduckgo.com, etc.
-# - Add more error handling
-# - Add more ways to process the search results (e.g. extract the title, link, and description)
-# - Add more ways to process the page content (e.g. extract the text from the page)
-# - Add more ways to search. Use GPT-4-vision-preview to search for image. By having a screen shot of tope 10 images and using GPT-4-vision-preview to help navigate and build a report.
-# Use GPT-4-vision-preview to help navigate and build a report. for all the functions. I also want to eleminate the need for pre made actions  and use GPT-4-vision-preview to handle the web navigation.
-# This needs to allow GPT-4-vision-preview to handle the web navigation by using the screen shot of where its at and assessing the page (having it select links and click on them).
-# a nice mix of both where vision and text input are used with selenium to navigate the web.
-# I possibly want to add in Tree of thouht (very hard to do).
 
 
 
@@ -111,7 +100,7 @@ def perform_search(query):
 
 
 
-def extract_search_results(query, num_results, filename, summary_filename):
+def extract_search_results(query, num_results, filename, summary_filename, model_id):  # Added model_id as a parameter
     print("Extracting search results...")
     search_results = perform_search(query)[:num_results]  # Limit to user-specified number of results
     if search_results is None:
@@ -146,7 +135,7 @@ def extract_search_results(query, num_results, filename, summary_filename):
                 print("\n---\n")  # Print a separator
                 f.write("\n---\n")  # Write a separator to the file
                 if "Sorry, you have been blocked" not in page_content:  # Check if the page content indicates you've been blocked
-                    gpt_response = process_results_with_gpt3(title, link, page_content, summary_filename)  # Process the page content with GPT-3
+                    gpt_response = process_results_with_gpt3(title, link, page_content, summary_filename, model_id)  # Process the page content with GPT-3 and added model_id as a parameter
                     if gpt_response is not None:
                         print(f"humanWeb's Response: {gpt_response}")
             except Exception as e:
@@ -157,15 +146,16 @@ def extract_search_results(query, num_results, filename, summary_filename):
 def process_results_with_gpt3(title, link, content, summary_filename, model_id):
     print("Processing results with humanWeb...")
     try:
-        system_prompt = f"Given the following information, extract unique and interesting facts and analytical infromation. Do not just summarize it. This would will be used in a upcomiing report about {initial_query}. If the information is already known in the content, please do not repeat it. Look at the context given. MUST have sources at bottom."
+        system_prompt = f"Given the following information, extract unique and interesting facts and analytical information. Do not just summarize it. This will be used in an upcoming report about {initial_query}. If the information is already known in the content, please do not repeat it. Look at the context given. MUST have sources at bottom."
         messages = [{'role': 'system', 'content': system_prompt}, {'role': 'user', 'content': content}]
         
-        response = openai.ChatCompletion.create(
-            model=model_id, #changed since it is smaller
-            messages=messages
+        response = client.chat.completions.create(
+            model=model_id,
+            messages=messages,
+            max_tokens=4096  # Request the maximum number of tokens
         )
         time.sleep(3)
-        gpt_response = response.choices[0].message['content'].strip()
+        gpt_response = response.choices[0].message.content.strip()
 
         # Use the GPT-3 response as the final summary
         summary = f"\n## {title}\n\nSource: [{link}]({link})\n\nhumanWeb Summary: {gpt_response}\n"
@@ -192,31 +182,25 @@ def create_report(query, initial_query, num_results, all_summaries,model_id):
 
     # Generate 3 reports
     for _ in range(3):
-        response = openai.ChatCompletion.create(
-            model=model_id, #changed since it is smaller
-            messages=messages
-        )
-        gpt_report = response.choices[0].message['content'].strip()
+        response = client.chat.completions.create(model=model_id, #changed since it is smaller
+        messages=messages)
+        gpt_report = response.choices[0].message.content.strip()
 
         # Researcher step
         researcher_prompt = f"You are a researcher tasked with investigating the report. You are a peer-reviewer. List the flaws and faulty logic of the report. Here are all the summaries from each page of the search made: {all_summaries}. Make sure every response has sources and inline citations. Let's work this out in a step by step way to be sure we have all the errors:"
         researcher_messages = [{'role': 'system', 'content': researcher_prompt}, {'role': 'user', 'content': gpt_report}]
-        researcher_response = openai.ChatCompletion.create(
-            model=model_id, #changed since it is smaller
-            messages=researcher_messages
-        )
+        researcher_response = client.chat.completions.create(model=model_id, #changed since it is smaller
+        messages=researcher_messages)
         time.sleep(5)
-        researcher_output = researcher_response.choices[0].message['content'].strip()
+        researcher_output = researcher_response.choices[0].message.content.strip()
 
         # Resolver step
         resolver_prompt = f"You are a resolver tasked with improving the report. Print the improved report in full. Let's work this out in a step by step way to be sure we have the right report use the goal: {initial_query} and data resarched {all_summaries} to provide the best report possible.:"
         resolver_messages = [{'role': 'system', 'content': resolver_prompt}, {'role': 'user', 'content': researcher_output}]
-        resolver_response = openai.ChatCompletion.create(
-            model=model_id, #changed since it is smaller
-            messages=resolver_messages
-        )
+        resolver_response = client.chat.completions.create(model=model_id, #changed since it is smaller
+        messages=resolver_messages)
         time.sleep(5)
-        resolver_output = resolver_response.choices[0].message['content'].strip()
+        resolver_output = resolver_response.choices[0].message.content.strip()
 
         # Score the resolver output (you can replace this with your own scoring function)
         score = len(resolver_output)
@@ -229,18 +213,28 @@ def create_report(query, initial_query, num_results, all_summaries,model_id):
     # If the best score is below a certain threshold, restart the entire search process
     THRESHOLD = 5000  # Set the threshold here
     if best_score < THRESHOLD:
-        print("\n\nReport not satisfactory, restarting the search process...")
+        print("\n\n !!!!!! Report not satisfactory, restarting the search process... !!!!!!")
         all_summaries = []  # Clear the all_summaries list
         # Reset other variables as necessary here
         # Call your search function here to restart the search process
         # You might need to modify your search function to return the final report
-        filename = os.path.join(f"Searches/{initial_query}", f"{query}_{time.time()}.txt")  # Store the filename
-        summary_filename = os.path.join(f"Searches/{initial_query}", f"Summary_{query}_{time.time()}.txt")  # Store the summary filename
-        return extract_search_results(query, num_results, filename, summary_filename)
+        timestamp = time.strftime("%Y%m%d%H%M%S", time.localtime())  # This will create a timestamp in the format of YearMonthDayHourMinuteSecond
+        
+        # Ensure the directory exists before trying to open the file
+        searches_directory = "Searches"
+        os.makedirs(searches_directory, exist_ok=True)
+        
+        # Use the formatted timestamp for the filenames
+        filename = os.path.join(searches_directory, f"{timestamp}.txt")
+        summary_filename = os.path.join(searches_directory, f"Summary_{timestamp}.txt")
+        
+        return extract_search_results(query, num_results, filename, summary_filename, model_id) 
 
     print(f"\n\nhumanWeb Report: {best_report}")
-    os.makedirs(f"Reports/{initial_query}", exist_ok=True)  # Create the "Reports" directory if it doesn't exist
-    report_filename = os.path.join("Reports", initial_query, f"Report_{query}_{str(time.time())}.md")  # Store the report filename
+    report_directory = os.path.join("Reports", re.sub(r'[<>:"/\\|?*]', '', initial_query))  # Remove any invalid characters
+    os.makedirs(report_directory, exist_ok=True)  # Create the "Reports" directory if it doesn't exist
+    timestamp = time.strftime("%Y%m%d%H%M%S", time.localtime())  # This will create a timestamp in the format of YearMonthDayHourMinuteSecond
+    report_filename = os.path.join(report_directory, f"Report_{timestamp}.md")  # Use the formatted timestamp
     with open(report_filename, "w") as rf:  # Open the report file
         rf.write(f"# humanWeb Report:\n\n{best_report}\n\nReport generated by: Oraculum AI\n")
         rf.write(f"\n\nPrompt used to generate list: {initial_query}\nSearch made for this report: {query}")
@@ -250,13 +244,14 @@ def create_report(query, initial_query, num_results, all_summaries,model_id):
 
 print("\n\n\nWelcome to humanWeb! \nThis is a tool that uses OPEN AI or Local LMs to help you search the web and create a reports.\n Results may vary. BUGS ARE EXPECTED. \n\n\n")
 
-num_results = int(input("Number of website to visit (Default 10) :"))
-initial_query = input("Enter your request. Not a google. (gpt will decide what to google): ")
+num_results = int(input("Number of website to visits per report (Default 10) :"))
+initial_query = input("Tell humanWeb what kind of report you want. Descirbe in as much detail as you please. Enter your request. Not a google. (gpt will decide what to google): ")
 
-# Create directories for the initial query
-os.makedirs(f"Searches/{initial_query}", exist_ok=True)
-os.makedirs(f"Reports/{initial_query}", exist_ok=True)
-#os.makedirs(f"Reports/{initial_query}", exist_ok=True)
+max_length = 10
+# Function to truncate a string to a maximum length
+
+
+
 
 num_queries = int(input("Number of reports (Default 5) : "))
 additional_queries = generate_additional_queries(initial_query, num_queries, model_id)
@@ -279,12 +274,26 @@ for query in all_queries:
     # Debug: print the current iteration and query
     print(f"\n\n\nIteration {num_iterations + 1}, processing query: '{query}'")
 
-    filename = os.path.join(f"Searches/{initial_query}", f"{query}_{time.time()}.txt")  # Store the filename
-    summary_filename = os.path.join(f"Searches/{initial_query}", f"Summary_{query}_{time.time()}.txt")  # Store the summary filename
+    # At the end of the script, where the filenames are being created
 
-    extract_search_results(query, num_results, filename, summary_filename)
-    create_report(query, initial_query, num_results,all_summaries)
-    qa_query = create_qa(query, summary_filename)
+    # Create a timestamp in the format of YearMonthDayHourMinuteSecond
+    # At the end of the script, where the filenames are being created
+
+    # Create a timestamp in the format of YearMonthDayHourMinuteSecond
+    timestamp = time.strftime("%Y%m%d%H%M%S", time.localtime())
+
+    # Ensure the directory exists before trying to open the file
+    searches_directory = "Searches"
+    os.makedirs(searches_directory, exist_ok=True)
+
+    # Use the formatted timestamp for the filename instead of the full initial query
+    filename = os.path.join(searches_directory, f"{timestamp}.txt")
+    summary_filename = os.path.join(searches_directory, f"Summary_{timestamp}.txt")
+
+    extract_search_results(query, num_results, filename, summary_filename, model_id)
+    create_report(query, initial_query, num_results, all_summaries, model_id)
+    # needs model id
+    qa_query = create_qa(query, summary_filename, model_id)
 
     if qa_query != query and num_additional_queries < MAX_ADDITIONAL_QUERIES:
         # If the result of create_qa is a new query and we haven't reached the limit, you can add it to all_queries and process it
@@ -309,6 +318,7 @@ print("\nDone.")
 
 # Close the debug log file at the end
 debug_log.close()
+
 
 
 

@@ -1,5 +1,14 @@
 
-
+# Ideas to update this function and project - then from that make new project about vision seeing computer and using mouse.:
+# - Add more websitese to the list to use for like bing.com, duckduckgo.com, etc.
+# - Add more error handling
+# - Add more ways to process the search results (e.g. extract the title, link, and description)
+# - Add more ways to process the page content (e.g. extract the text from the page)
+# - Add more ways to search. Use GPT-4-vision-preview to search for image. By having a screen shot of tope 10 images and using GPT-4-vision-preview to help navigate and build a report.
+# Use GPT-4-vision-preview to help navigate and build a report. for all the functions. I also want to eleminate the need for pre made actions  and use GPT-4-vision-preview to handle the web navigation.
+# This needs to allow GPT-4-vision-preview to handle the web navigation by using the screen shot of where its at and assessing the page (having it select links and click on them).
+# a nice mix of both where vision and text input are used with selenium to navigate the web.
+# I possibly want to add in Tree of thouht (very hard to do).
 
 
 
