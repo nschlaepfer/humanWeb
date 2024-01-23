@@ -21,7 +21,7 @@ def retry_on_service_unavailable(max_retries=5, backoff_factor=0.5):
             while retries < max_retries:
                 try:
                     return func(*args, **kwargs)
-                except openai.error.ServiceUnavailableError:
+                except openai.ServiceUnavailableError:
                     sleep_time = backoff_factor * (2 ** retries)
                     time.sleep(sleep_time)
                     retries += 1

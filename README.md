@@ -123,7 +123,7 @@ humanWeb operates in Websmart mode, which performs a comprehensive sequence of t
 
  including web search, information extraction, data summarization, report generation, and additional query formulation. 
 
-To run humanWeb, use the command `python humanWeb.py` and follow the prompts. You will be asked to input:
+To run humanWeb, use the command `python humanWeb.py` or 'python3 ...' and follow the prompts. You will be asked to input:
 
 1. The number of search results you want to process.
 2. Your initial query.

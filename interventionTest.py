@@ -5,7 +5,9 @@ import json
 import time
 
 from dotenv import load_dotenv
-import openai
+from openai import OpenAI
+
+client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
@@ -18,7 +20,6 @@ from retry_decorator import retry_on_service_unavailable
 load_dotenv()  # take environment variables from .env.
 
 # Get OpenAI API key from environment variable
-openai.api_key = os.getenv('OPENAI_API_KEY')
 
 options = webdriver.ChromeOptions()
 options.add_argument('headless')
@@ -45,11 +46,9 @@ def generate_additional_queries(query, num_queries):
     print("Generating additional queries with GPT-3...")
     system_prompt = f"Given this query, come up with {num_queries} more queries that will help get the most information or complete a task in order. Come up with the most consise and clear queries for google."
     messages = [{'role': 'system', 'content': system_prompt}, {'role': 'user', 'content': query}]
-    response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo", #changed since it is smaller
-        messages=messages
-    )
-    additional_queries = response.choices[0].message['content'].strip().split('\n')[:num_queries]
+    response = client.chat.completions.create(model="gpt-3.5-turbo", #changed since it is smaller
+    messages=messages)
+    additional_queries = response.choices[0].message.content.strip().split('\n')[:num_queries]
     # Write to debug log
     debug_log.write(f"Generated additional queries: {additional_queries}\n")
     return additional_queries
@@ -126,12 +125,10 @@ def process_results_with_gpt3(title, link, content, summary_filename):
         system_prompt = f"Given the following information, extract unique and interesting facts and analytical infromation. Do not just summarize it. This would will be used in a upcomiing report about {initial_query}. If the information is already known in the content, please do not repeat it. Look at the context given. MUST have sources at bottom."
         messages = [{'role': 'system', 'content': system_prompt}, {'role': 'user', 'content': content}]
         
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo-16k", 
-            messages=messages
-        )
+        response = client.chat.completions.create(model="gpt-3.5-turbo-16k", 
+        messages=messages)
         time.sleep(3)
-        gpt_response = response.choices[0].message['content'].strip()
+        gpt_response = response.choices[0].message.content.strip()
 
         # Use the GPT-3 response as the final summary
         summary = f"\n## {title}\n\nSource: [{link}]({link})\n\nGPT-3 Summary: {gpt_response}\n"
@@ -158,31 +155,25 @@ def create_report(query, initial_query, num_results, all_summaries):
 
     # Generate 3 reports
     for _ in range(3):
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo-16k",
-            messages=messages
-        )
-        gpt_report = response.choices[0].message['content'].strip()
+        response = client.chat.completions.create(model="gpt-3.5-turbo-16k",
+        messages=messages)
+        gpt_report = response.choices[0].message.content.strip()
 
         # Researcher step
         researcher_prompt = f"You are a researcher tasked with investigating the report. You are a peer-reviewer. List the flaws and faulty logic of the report. Here are all the summaries from each page of the search made: {all_summaries}. Make sure every response has sources and inline citations. Let's work this out in a step by step way to be sure we have all the errors:"
         researcher_messages = [{'role': 'system', 'content': researcher_prompt}, {'role': 'user', 'content': gpt_report}]
-        researcher_response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo-16k",
-            messages=researcher_messages
-        )
+        researcher_response = client.chat.completions.create(model="gpt-3.5-turbo-16k",
+        messages=researcher_messages)
         time.sleep(5)
-        researcher_output = researcher_response.choices[0].message['content'].strip()
+        researcher_output = researcher_response.choices[0].message.content.strip()
 
         # Resolver step
         resolver_prompt = f"You are a resolver tasked with improving the report. Print the improved report in full. Let's work this out in a step by step way to be sure we have the right report use the goal: {initial_query} and data resarched {all_summaries} to provide the best report possible.:"
         resolver_messages = [{'role': 'system', 'content': resolver_prompt}, {'role': 'user', 'content': researcher_output}]
-        resolver_response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo-16k",
-            messages=resolver_messages
-        )
+        resolver_response = client.chat.completions.create(model="gpt-3.5-turbo-16k",
+        messages=resolver_messages)
         time.sleep(5)
-        resolver_output = resolver_response.choices[0].message['content'].strip()
+        resolver_output = resolver_response.choices[0].message.content.strip()
 
         # Score the resolver output (you can replace this with your own scoring function)
         score = len(resolver_output)
