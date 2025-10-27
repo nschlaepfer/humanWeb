@@ -3,10 +3,11 @@
 from __future__ import annotations
 
 import textwrap
-from dataclasses import dataclass
 from typing import Iterable, List, Sequence
 
 from openai import OpenAI
+
+from ._compat import slotted_dataclass
 
 
 def _parse_list(raw: str) -> List[str]:
@@ -40,7 +41,7 @@ def _extract_text(response) -> str:
     return "\n".join(chunks).strip()
 
 
-@dataclass(slots=True)
+@slotted_dataclass
 class GPTResearchAgent:
     """High-level wrapper that orchestrates GPT-5 prompts used by the tool."""
 
@@ -166,4 +167,3 @@ class GPTResearchAgent:
         ).strip()
 
         return self._call(system_prompt, user_prompt)
-

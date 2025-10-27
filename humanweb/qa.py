@@ -2,13 +2,14 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
 from typing import Iterable
 
 from openai import OpenAI
 
+from ._compat import slotted_dataclass
 
-@dataclass(slots=True)
+
+@slotted_dataclass
 class ReportReviewer:
     client: OpenAI
     model: str = "gpt-5"
@@ -57,4 +58,3 @@ class ReportReviewer:
                 if text:
                     parts.append(text)
         return "\n".join(parts).strip()
-

@@ -4,10 +4,11 @@ from __future__ import annotations
 
 import json
 import re
-from dataclasses import dataclass, field
+from dataclasses import field
 from pathlib import Path
 from typing import Iterable, List, Sequence
 
+from ._compat import slotted_dataclass
 from .browser import PageInsights, SearchResult
 
 
@@ -16,7 +17,7 @@ def _slugify(value: str) -> str:
     return slug or "session"
 
 
-@dataclass(slots=True)
+@slotted_dataclass
 class ResearchStorage:
     """Manages the directory structure used to persist research artefacts."""
 
@@ -102,4 +103,3 @@ class ResearchStorage:
 
     def iter_summaries(self) -> Iterable[str]:
         return list(self.summaries)
-

@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, Iterable, List, Optional
 
@@ -16,8 +15,10 @@ from playwright.async_api import (  # type: ignore[import]
     async_playwright,
 )
 
+from ._compat import slotted_dataclass
 
-@dataclass(slots=True)
+
+@slotted_dataclass
 class SearchResult:
     """A single Google search hit."""
 
@@ -26,7 +27,7 @@ class SearchResult:
     snippet: str
 
 
-@dataclass(slots=True)
+@slotted_dataclass
 class PageInsights:
     """Data collected from a webpage using Chrome DevTools."""
 
@@ -223,4 +224,3 @@ def summarise_network(requests: Iterable[Dict[str, object]], limit: int = 8) -> 
         if len(rows) >= limit:
             break
     return "\n".join(rows)
-
