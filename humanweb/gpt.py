@@ -54,11 +54,11 @@ class GPTResearchAgent:
             input=[
                 {
                     "role": "system",
-                    "content": [{"type": "text", "text": system_prompt}],
+                    "content": [{"type": "input_text", "text": system_prompt}],
                 },
                 {
                     "role": "user",
-                    "content": [{"type": "text", "text": user_prompt}],
+                    "content": [{"type": "input_text", "text": user_prompt}],
                 },
             ],
             text={"format": {"type": "text"}},

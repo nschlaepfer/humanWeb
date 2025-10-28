@@ -22,7 +22,7 @@ class ReportReviewer:
                     "role": "system",
                     "content": [
                         {
-                            "type": "text",
+                            "type": "input_text",
                             "text": (
                                 "You are a critical reviewer grading a research report. Highlight"
                                 " factual gaps and improvement opportunities."
@@ -34,7 +34,7 @@ class ReportReviewer:
                     "role": "user",
                     "content": [
                         {
-                            "type": "text",
+                            "type": "input_text",
                             "text": (
                                 f"Objective: {objective}\n\nReport:\n{report}\n\nEvidence packets:\n"
                                 + "\n\n".join(evidence)
