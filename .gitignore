@@ -11,3 +11,5 @@ basicWeb.py
 AI.py
 Modular/
 DevFolder/
+__pycache__/
+.venv/
